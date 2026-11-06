@@ -87,6 +87,11 @@ documents/postings/**
 # in documents/applications/<company>_<role>/, covered above. Kept because
 # tools/security_guards.py pins it in REQUIRED_IGNORE_RULES.
 documents/interview/**
+# /submit: your standard form answers (salary, visa, notice period, demographics)
+# and the form-label maps learned per hiring platform. The tracked
+# documents/application_answers.example.json is the blank template.
+documents/application_answers.json
+documents/form_maps/**
 !documents/**/.gitkeep
 
 # Personal job search tracking

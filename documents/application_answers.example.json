@@ -1,0 +1,37 @@
+{
+  "_readme": "Copy this file to documents/application_answers.json (gitignored) and fill it in. /submit reads it to answer standard application-form questions. Leave a value empty to be asked each time. Identity values left empty fall back to cv/main_example.tex.",
+  "identity": {
+    "first_name": "",
+    "last_name": "",
+    "full_name": "",
+    "email": "",
+    "phone": "",
+    "location": "",
+    "linkedin_url": "",
+    "github_url": "",
+    "portfolio_url": ""
+  },
+  "answers": {
+    "years_of_experience": "",
+    "current_title": "",
+    "current_employer": "",
+    "notice_period": "",
+    "earliest_start_date": "",
+    "current_salary": "",
+    "expected_salary_india": "",
+    "expected_salary_germany_eur": "",
+    "work_authorization_india": "",
+    "requires_visa_sponsorship_germany": "",
+    "willing_to_relocate": "",
+    "preferred_work_mode": "",
+    "highest_degree": "",
+    "university": "",
+    "graduation_year": "",
+    "how_did_you_hear": "",
+    "gender": "",
+    "pronouns": "",
+    "disability_status": "",
+    "veteran_status": "",
+    "ethnicity": ""
+  }
+}

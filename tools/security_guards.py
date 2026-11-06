@@ -101,6 +101,12 @@ ALLOWED_PERMISSIONS = {
     # Reads a file or stdin, writes only to an explicit --out, never fetches.
     "Bash(python tools/posting_guard.py:*)",
     "Bash(python3 tools/posting_guard.py:*)",
+    # /submit's packet builder and recorder. Never fetches or opens a browser;
+    # writes only the tracker row it matched, the application's archive folder
+    # and documents/form_maps/. submit_playwright.py has no grant on purpose:
+    # it is interactive and the user runs it themselves.
+    "Bash(python tools/submit_packet.py:*)",
+    "Bash(python3 tools/submit_packet.py:*)",
 }
 
 # Rules that must stay in .claude/settings.json permissions.ask. An ask rule
@@ -190,6 +196,10 @@ REQUIRED_IGNORE_RULES = [
     # Belt-and-braces, not the primary guard: nothing writes here.
     # /interview's prep packs land under documents/applications/**, above.
     "documents/interview/**",
+    # /submit: standard form answers (salary, visa, notice period) and the
+    # learned form-label maps.
+    "documents/application_answers.json",
+    "documents/form_maps/**",
     "job_search_tracker.csv",
     "gmail_sync/",
     "reports/",
