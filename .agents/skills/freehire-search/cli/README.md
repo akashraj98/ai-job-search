@@ -75,7 +75,7 @@ See `../SKILL.md` for the full flag reference and the hosted-dependency note.
 | Flag | Alias | Description |
 |------|-------|-------------|
 | `--query` | `-q` | Keywords (title / skill / role). Full-text; optional. `a OR b` matches either (uppercase `OR`, max 5 alternatives); a leading `title:` searches the job title only. |
-| `--jobage` | | Posted within N days (`posted_within_days`). |
+| `--jobage` | | Posted within N days (`posted_within_days`). Default 14; `9999` disables the filter. |
 | `--page` | | 1-indexed page. Default 1. |
 | `--limit` | `-n` | Results per page (API limit). Default 25. |
 | `--region` | | Macro-region(s), comma = OR: `global`, `eu`, `uk`, `north_america`, `latam`, `apac`, `mena`, `africa`, `cis` (e.g. `eu,uk`). A country such as `us` goes in `--country`. |

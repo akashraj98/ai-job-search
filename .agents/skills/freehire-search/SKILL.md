@@ -82,7 +82,9 @@ bun run .agents/skills/freehire-search/cli/src/cli.ts search [-q "<keywords>"] [
 Key flags:
 - `--query <text>` / `-q <text>` — keyword search (title, skill, role). Full-text; optional.
   Supports `OR` and `title:` (see "Query operators" below).
-- `--jobage <days>` — posted within N days (maps to `posted_within_days`).
+- `--jobage <days>` — posted within N days (maps to `posted_within_days`). **Default 14**,
+  because freehire's index keeps stale postings (some from 2022). Pass `--jobage 9999` to
+  search all postings regardless of age.
 - `--page <n>` — 1-indexed page. Default 1.
 - `--limit <n>` / `-n <n>` — results per page (API limit). Default 25.
 - `--format json|table|plain` — default `json`.

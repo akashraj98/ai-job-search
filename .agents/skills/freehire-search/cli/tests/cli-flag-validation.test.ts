@@ -75,6 +75,28 @@ describe("freehire CLI flag validation", () => {
         server.stop(true);
       }
     });
+
+    test("omitting --jobage defaults to 14 days; --jobage 9999 sends no age filter", async () => {
+      const requests: URL[] = [];
+      const server = Bun.serve({
+        hostname: "127.0.0.1",
+        port: 0,
+        fetch(request) {
+          requests.push(new URL(request.url));
+          return Response.json({ data: [], meta: { total: 0 } });
+        },
+      });
+      try {
+        const env = { FREEHIRE_API_URL: server.url.toString() };
+        expect((await runCLI(["search", "--limit", "1"], env)).exitCode).toBe(0);
+        expect((await runCLI(["search", "--jobage", "9999", "--limit", "1"], env)).exitCode).toBe(0);
+        expect(requests).toHaveLength(2);
+        expect(requests[0].searchParams.get("posted_within_days")).toBe("14");
+        expect(requests[1].searchParams.has("posted_within_days")).toBe(false);
+      } finally {
+        server.stop(true);
+      }
+    });
   });
 
   describe("--description-format validation", () => {

@@ -82,6 +82,7 @@ SEARCH FLAGS
                           "a OR b" matches either (uppercase OR, max 5);
                           a leading title: searches the job title only.
   --jobage <days>         Posted within N days (maps to posted_within_days).
+                          Default 14. Pass 9999 to include older postings.
   --page <n>              1-indexed page. Default 1.
   --limit, -n <n>         Results per page (API limit). Default 25.
   --format <fmt>          json (default) | table | plain.
@@ -284,7 +285,9 @@ async function main(): Promise<number> {
 
     const opts: SearchOpts = {
       query: stringFlag(flags.query),
-      jobage: flags.jobage ? parseInt(flags.jobage as string, 10) : 9999,
+      // Default 14 days: freehire keeps old postings (some from 2022) in its index.
+      // --jobage 9999 is the opt-out (search.ts sends no posted_within_days at 9999).
+      jobage: flags.jobage ? parseInt(flags.jobage as string, 10) : 14,
       page: flags.page ? Math.max(1, parseInt(flags.page as string, 10)) : 1,
       limit: flags.limit ? Math.max(1, parseInt(flags.limit as string, 10)) : 25,
       format: fmt as SearchOpts["format"],
